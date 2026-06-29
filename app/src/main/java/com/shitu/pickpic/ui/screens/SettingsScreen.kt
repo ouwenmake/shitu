@@ -26,7 +26,7 @@ fun SettingsScreen(onBack: () -> Unit) {
         }
     ) { padding ->
         Column(modifier = Modifier.padding(padding).padding(16.dp)) {
-            ListItem(
+            androidx.compose.material3.ListItem(
                 headlineContent = { Text("切换语言") },
                 trailingContent = {
                     TextButton(onClick = { language = if (language == "中文") "English" else "中文" }) {
@@ -34,8 +34,8 @@ fun SettingsScreen(onBack: () -> Unit) {
                     }
                 }
             )
-            Divider()
-            ListItem(
+            HorizontalDivider()
+            androidx.compose.material3.ListItem(
                 headlineContent = { Text("关于拾图") },
                 supportingContent = { Text("版本 1.0.0") }
             )
