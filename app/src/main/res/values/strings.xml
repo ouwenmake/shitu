@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">拾图</string>
+    <string name="pick_photos">一键选图</string>
+    <string name="storage_usage">当前存储空间使用</string>
+    <string name="analyzing">AI 智能精选中...</string>
+    <string name="best_photos">精选</string>
+    <string name="alternative_photos">备选</string>
+    <string name="duplicate_photos">重复</string>
+    <string name="trash_photos">废片</string>
+    <string name="one_click_cleanup">一键清理</string>
+    <string name="export_best">批量导出精选</string>
+    <string name="privacy_tip">《拾图》采用本地AI端侧分析，100%保护隐私安全。</string>
+    <string name="score_label">综合评分</string>
+    <string name="report_title">AI 美学报告</string>
+    <string name="cleanup_success">成功释放 %s 存储空间！</string>
+    <string name="delete_confirm_title">确定删除这些照片吗？</string>
+    <string name="delete_confirm_msg">照片将移至“最近删除”，30天内可恢复。</string>
+</resources>
