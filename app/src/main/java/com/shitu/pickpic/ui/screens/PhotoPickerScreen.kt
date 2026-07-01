@@ -39,10 +39,14 @@ fun PhotoPickerScreen(
     val gridState = rememberLazyGridState()
     val itemPositions = remember { mutableStateMapOf<Int, androidx.compose.ui.geometry.Rect>() }
 
-    // Mock photos for demo
+    // Mock photos for demo with safety check
     val photos = remember {
-        (1..100).map { id ->
-            PhotoItem(id.toLong(), Uri.parse("https://picsum.photos/seed/${id}/400/400"))
+        try {
+            (1..100).map { id ->
+                PhotoItem(id.toLong(), Uri.parse("https://picsum.photos/seed/${id}/400/400"))
+            }
+        } catch (e: Exception) {
+            emptyList<PhotoItem>()
         }
     }
 
@@ -93,8 +97,9 @@ fun PhotoPickerScreen(
                             val currentPos = change.position
                             itemPositions.forEach { (index, rect) ->
                                 if (rect.contains(currentPos)) {
-                                    val id = photos[index].id
-                                    selectedIds = selectedIds + id
+                                    photos.getOrNull(index)?.id?.let { id ->
+                                        selectedIds = selectedIds + id
+                                    }
                                 }
                             }
                         }
@@ -140,7 +145,9 @@ fun PhotoGridItem(
             .clickable { onToggle() }
     ) {
         Image(
-            painter = rememberAsyncImagePainter(photo.uri),
+            painter = rememberAsyncImagePainter(
+                model = photo.uri.takeIf { it.toString().isNotEmpty() } ?: Uri.EMPTY
+            ),
             contentDescription = null,
             modifier = Modifier.fillMaxSize(),
             contentScale = ContentScale.Crop
