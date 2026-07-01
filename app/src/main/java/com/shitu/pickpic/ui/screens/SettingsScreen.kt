@@ -34,7 +34,7 @@ fun SettingsScreen(onBack: () -> Unit) {
                     }
                 }
             )
-            HorizontalDivider()
+            Divider()
             androidx.compose.material3.ListItem(
                 headlineContent = { Text("关于拾图") },
                 supportingContent = { Text("版本 1.0.0") }
